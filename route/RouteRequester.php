@@ -13,12 +13,29 @@ class RouteRequester
         $this->apiKey = $apiKey;
     }
 
-    function requestData($fromLat, $fromLng, $toLat, $toLng)
+    function requestLatLng($text)
+    {
+        $jsonurl = "https://api.openrouteservice.org/geocode/search?" .
+            "api_key=" . $this->apiKey .
+            "&text=" . urlencode($text);
+        $json = file_get_contents($jsonurl);
+        $result = json_decode($json);
+
+        if (isset($result->{'features'}[0]->{'geometry'}->{'coordinates'})) {
+            return new Coordinates(
+                $result->{'features'}[0]->{'geometry'}->{'coordinates'}[0],
+                $result->{'features'}[0]->{'geometry'}->{'coordinates'}[1]);
+        }
+
+        return null;
+    }
+
+    function requestRoute(Coordinates $fromCoords, Coordinates $toCoords)
     {
         $jsonurl = "https://api.openrouteservice.org/directions?" .
             "api_key=" . $this->apiKey .
-            "&coordinates=" . $fromLat . "%2C" . $fromLng . "|" .
-            $toLat . "%2C" . $toLng .
+            "&coordinates=" . $fromCoords->getLat() . "%2C" . $fromCoords->getLng() . "|" .
+            $toCoords->getLat() . "%2C" . $toCoords->getLng() .
             "&profile=driving-car" .
             "&preference=fastest" .
             "&format=json" .
