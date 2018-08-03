@@ -14,7 +14,8 @@ $routeRequester = new \Route\RouteRequester($openRouteServiceApiKey);
 
 $fromText = "Oud Beijerland, The Netherlands";
 $toText = "Delft, The Netherlands";
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Hello Explect!</title>
