@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: Toby T. van Willegen
- * Date: 3-8-2018
- * Time: 21:57
+ * A difficulty in the road. The curvature object consists of a radius of a turn.
  */
+
 
 namespace difficulties;
 
@@ -19,7 +17,7 @@ class Curvature
     }
 
     /**
-     * @return double the radius of the curvature.
+     * @return double; the radius of the curvature.
      */
     public function getRadius()
     {

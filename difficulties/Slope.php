@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by IntelliJ IDEA.
- * User: Toby T. van Willegen
- * Date: 3-8-2018
- * Time: 22:10
+ * A difficulty in the road. The slope object consists of an angle of ascent or descent.
  */
 
 namespace difficulties;
@@ -19,7 +16,7 @@ class Slope
     }
 
     /**
-     * @return double Returns the angle of the ascension, negative if descent.
+     * @return double; Returns the angle of the ascension, negative if descent.
      */
     public function getAngleOfAscent()
     {
